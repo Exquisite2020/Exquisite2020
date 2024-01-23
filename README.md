@@ -1,2 +1,2 @@
-# Simple-Clinic-Managment-Project-In-Django
-This is simple clinic managment system with django admin,  receptionist and doctor dashboard and online booking for patient. 
+# Simple-Hospital-Managment-Project-In-Django
+Simple Hospital Management system with django admin, dashboard for receptionist and doctor to facilitate online booking for patient consultation. 
