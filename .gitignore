@@ -1,4 +1,49 @@
-*.pyc
-home_test/migrations/*
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Django
+*.log
+local_settings.py
 db.sqlite3
-db*
+db.sqlite3-journal
+
+# Media files
+media/
+staticfiles/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Compiled Python
+*.pyc
+
+# Coverage
+htmlcov/
+.coverage
+.pytest_cache/
