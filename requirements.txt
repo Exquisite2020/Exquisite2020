@@ -2,7 +2,7 @@
 Django>=4.2,<5.0
 
 # Database
-psycopg2-binary>=2.9.6  # PostgreSQL adapter (for production)
+psycopg2-binary>=2.9.6
 
 # Environment Variables
 python-dotenv>=1.0.0
@@ -17,7 +17,7 @@ crispy-bootstrap5>=0.7
 # Authentication
 django-allauth>=0.54.0
 
-# REST API (optional, for future API endpoints)
+# REST API
 djangorestframework>=3.14.0
 
 # Image Handling
