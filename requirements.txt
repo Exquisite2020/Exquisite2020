@@ -1,0 +1,35 @@
+# Django Core
+Django>=4.2,<5.0
+
+# Database
+psycopg2-binary>=2.9.6  # PostgreSQL adapter (for production)
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# Static Files
+whitenoise>=6.5.0
+
+# Forms & Validation
+django-crispy-forms>=2.0
+crispy-bootstrap5>=0.7
+
+# Authentication
+django-allauth>=0.54.0
+
+# REST API (optional, for future API endpoints)
+djangorestframework>=3.14.0
+
+# Image Handling
+Pillow>=10.0.0
+
+# Date & Time Utilities
+python-dateutil>=2.8.2
+
+# Testing
+pytest-django>=4.5.2
+factory-boy>=3.3.0
+
+# Code Quality
+flake8>=6.0.0
+black>=23.0.0
