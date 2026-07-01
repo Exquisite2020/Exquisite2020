@@ -4,21 +4,23 @@ from django.contrib.auth.models import User
 USER_TYPE = (('DOCTOR', 'DOCTOR'), ('RECEPTIONIST', 'RECEPTIONIST'),)
 USER_SPECIALISED = (('EMPLANT', 'EMPLANT'), ('ORTHO', 'ORTHO'))
 USER_GENDER = (('MALE', 'MALE'), ('FEMALE', 'FEMALE'))
-# Create your models here.
+
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	user_type = models.CharField(max_length=15, choices=USER_TYPE, default='PATIENT')
-	user_addr = models.CharField(max_length=155, null=True )
-	user_mobile = models.IntegerField(null=True )
+	user_addr = models.CharField(max_length=155, null=True)
+	user_mobile = models.IntegerField(null=True)
 	user_hire_date = models.DateField(blank=True, null=True)
 	user_dob = models.DateField(blank=True, null=True)
 	user_specialised = models.CharField(max_length=15, choices=USER_SPECIALISED, blank=True, null=True)
 	user_sex = models.CharField(max_length=10, choices=USER_GENDER, default='MALE')
 	user_qualification = models.CharField(max_length=100, blank=True, null=True)
 	user_bloodgroup = models.CharField(max_length=10, blank=True, null=True)
+
 	def __str__(self):
 		return str(self.user.username)
+
 
 class Patient(models.Model):
 	name = models.CharField(max_length=100)
@@ -30,12 +32,14 @@ class Patient(models.Model):
 	age = models.IntegerField(blank=True, null=True)
 	created_at = models.DateField(auto_now_add=True, blank=True, null=True)
 	updated_at = models.DateField(auto_now=True, blank=True, null=True)
+
 	def __str__(self):
 		return str(self.name)
 
+
 class Treatment(models.Model):
-	patient = models.ForeignKey(Patient)
-	doctor = models.ForeignKey(User, related_name='treat_doctor')
+	patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+	doctor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='treat_doctor')
 	title = models.CharField(max_length=50)
 	token = models.IntegerField()
 	description = models.CharField(max_length=100, blank=True, null=True)
@@ -43,12 +47,14 @@ class Treatment(models.Model):
 	dental_test = models.CharField(max_length=100, blank=True, null=True)
 	created_at = models.DateField(auto_now_add=True, blank=True, null=True)
 	updated_at = models.DateField(auto_now=True, blank=True, null=True)
+
 	def __str__(self):
 		return str(self.patient)
 
+
 class Appoiment(models.Model):
-	patient = models.ForeignKey(Patient)
-	doctor = models.ForeignKey(User, related_name='app_doctor')
+	patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+	doctor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='app_doctor')
 	token = models.IntegerField()
 	date = models.DateField(blank=True, null=True)
 	time = models.TimeField(null=True, blank=True)
@@ -56,16 +62,18 @@ class Appoiment(models.Model):
 	updated_at = models.DateField(auto_now=True, blank=True, null=True)
 
 	def __str__(self):
-		return str(self.patient.username)
+		return str(self.patient)
 
 	class Meta:
 		ordering = ('date',)
 
+
 class Bill(models.Model):
 	date = models.DateField(auto_now=True)
-	patient = models.ForeignKey(Patient)
-	doctor = models.ForeignKey(User, related_name='bill_doctor')
-	treatment = models.ForeignKey(Treatment)
+	patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+	doctor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bill_doctor')
+	treatment = models.ForeignKey(Treatment, on_delete=models.CASCADE)
 	amount = models.IntegerField()
+
 	def __str__(self):
 		return str(self.patient)
